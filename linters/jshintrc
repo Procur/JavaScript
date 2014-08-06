@@ -1,5 +1,26 @@
 {
   /*
+   * GLOBALS
+   * =================
+   */
+
+  "globals": {
+    /* JASMINE */
+    "describe": false,
+    "ddescribe": false,
+    "it": false,
+    "iit": false,
+    "xit": false,
+    "expect": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false,
+    "spyOn": false,
+    "jasmine": false
+  },
+
+  /*
    * ENVIRONMENTS
    * =================
    */
@@ -18,6 +39,16 @@
    * =================
    */
 
+  // Force use of curly braces for blocks
+  "curly": true,
+
+  // Prohibit the overwriting of prototype functions on built in objects
+  // (e.g., Array.prototype, Object.prototype)
+  "freeze": true,
+
+  // Require IIFE's be wrapped in parens
+  "immed": true,
+
   // Force all variable names to use either camelCase style or UPPER_CASE
   // with underscores.
   "camelcase": true,
@@ -32,7 +63,7 @@
   "indent": 2,
 
   // Prohibit use of a variable before it is defined.
-  "latedef": true,
+  "latedef": "nofunc",
 
   // Require capitalized names for constructor functions.
   "newcap": true,
