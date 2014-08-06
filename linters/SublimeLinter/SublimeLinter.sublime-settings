@@ -33,6 +33,16 @@
        * =================
        */
 
+      // Force use of curly braces for blocks
+      "curly": true,
+
+      // Prohibit the overwriting of prototype functions on built in objects
+      // (e.g., Array.prototype, Object.prototype)
+      "freeze": true,
+
+      // Require IIFE's be wrapped in parens
+      "immed": true,
+
       // Force all variable names to use either camelCase style or UPPER_CASE
       // with underscores.
       "camelcase": true,
