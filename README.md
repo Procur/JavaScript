@@ -225,12 +225,19 @@
     }
     ```
 
-  - Do not define and pass in functions as callbacks within the argument list. Instead use a named function declaration and pass the name reference.
+  - Keep function definitions in callbacks within the argument list to a minimum, particularly for large, complex functions. Instead use a named function declaration and pass the name reference.
 
     ```javascript
     // bad
     asyncCall(foo, function(err, result) {
       // ...stuff...
+      // ...more stuff...
+      // ...lots of stuff...
+    });
+
+    // okay - small function
+    asyncCall(foo, function handlResponse(err, result) {
+      return result.data;
     });
 
     // good
@@ -238,6 +245,8 @@
 
     function handleResponse(err, result) {
       // ...stuff...
+      // ...more stuff...
+      // ...lots of stuff...
     }
     ```
 
@@ -733,7 +742,7 @@
       return false;
     }
 
-    // bad
+    // okay
     function() { return false; }
 
     // good
@@ -1581,7 +1590,6 @@
 ## Modules
 
   - The file should be named with snake case and match the name of the single export written in camel case.
-  - Always declare `'use strict';` at the top of the module.
 
     ```javascript
     // Node module
@@ -1590,7 +1598,6 @@
     module.exports = FancyInput;
 
     function FancyInput() {
-      'use strict';
 
       function doSomethingFancy(options) {
         options = options || {};
@@ -1605,7 +1612,6 @@
 
     // Client-side module
     (function(global) {
-      'use strict';
 
       global.FancyModule = FancyModule;
 
@@ -1640,6 +1646,7 @@
   - `with`. No.
   - `delete`. Avoid if possible due to performance issues. Often the same objective can be achieved by setting the object property to `null` or `undefined`.
   - You should not be modifying the `prototype` of built in objects (e.g., `Object.prototype` or `Array.prototype`). Prefer creating a helper utility instead (e.g., the lo-dash library, which provides convenience methods for working with arrays and objects)
+  - In Node using Waterline, do not use `req.params.all`, which may allow for malicious code execution if javascript is passed in. Instead update each attribute individually.
 
 **[⬆ back to top](#table-of-contents)**
 
