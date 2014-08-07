@@ -5,7 +5,7 @@
    */
 
   "globals": {
-    /* JASMINE */
+    // JASMINE
     "describe": false,
     "ddescribe": false,
     "it": false,
@@ -17,7 +17,10 @@
     "after": false,
     "afterEach": false,
     "spyOn": false,
-    "jasmine": false
+    "jasmine": false,
+
+    // Angular
+    "angular": false
   },
 
   /*
@@ -84,5 +87,5 @@
   "maxlen": 80,
 
   // Enforce placing 'use strict' at the top function scope
-  "strict": true
+  "strict": false
 }
